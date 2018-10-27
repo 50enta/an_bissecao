@@ -5,22 +5,26 @@
  */
 package view;
 
+import org.nfunk.jep.JEP;
 
 /**
  *
- * @author 50enta
+ * @author POO_2018
  */
 public class Teste {
 
     public static void main(String[] args) {
-        Jep jep = new Jep();
-        try {
-            jep.addVariable("x", 10);
-            jep.parse("x+1");
-            Object result = jep.evaluate();
-            System.out.println("x + 1 = " + result);
-        } catch (JepException e) {
-            System.out.println("An error occurred: " + e.toString());
+
+        JEP jp = new JEP();
+        jp.addStandardConstants();
+        jp.addStandardFunctions();
+        jp.addVariable("x", 3);
+        jp.parseExpression("cos(1)");
+
+        if (jp.hasError()) {
+            System.out.println(jp.getErrorInfo());
+        } else {
+            System.out.println(jp.getValue());
         }
     }
 
