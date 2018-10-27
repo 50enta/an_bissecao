@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
 
+import model.Calculo;
+import model.Linha;
 import org.nfunk.jep.JEP;
 
 /**
@@ -14,18 +12,30 @@ import org.nfunk.jep.JEP;
 public class Teste {
 
     public static void main(String[] args) {
+        Calculo cal = new Calculo();
+        Linha l = new Linha("ln(x) - x + 2", 0.01, 3, 4);
+        
+        cal.calcular(l);
 
-        JEP jp = new JEP();
-        jp.addStandardConstants();
-        jp.addStandardFunctions();
-        jp.addVariable("x", 3);
-        jp.parseExpression("cos(1)");
+        System.out.println(cal.getCalculos());
 
-        if (jp.hasError()) {
-            System.out.println(jp.getErrorInfo());
-        } else {
-            System.out.println(jp.getValue());
-        }
+        
     }
+    
+    
+//    public static void main(String[] args) {
+//
+//        JEP jp = new JEP();
+//        jp.addStandardConstants();
+//        jp.addStandardFunctions();
+//        jp.addVariable("x", 3);
+//        jp.parseExpression("cos(1)");
+//
+//        if (jp.hasError()) {
+//            System.out.println(jp.getErrorInfo());
+//        } else {
+//            System.out.println(jp.getValue());
+//        }
+//    }
 
 }

@@ -40,21 +40,21 @@ public class Principal extends Frame {
         jPanel6 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtA = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtB = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtErro = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel20 = new javax.swing.JLabel();
+        txtFuncao = new javax.swing.JTextField();
+        btnCalcular = new javax.swing.JButton();
+        lblLimpar = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblN = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblP = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -101,14 +101,14 @@ public class Principal extends Frame {
         jLabel2.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
         jLabel2.setText("[");
 
-        jTextField1.setMinimumSize(new java.awt.Dimension(18, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtA.setMinimumSize(new java.awt.Dimension(18, 20));
+        txtA.setPreferredSize(new java.awt.Dimension(30, 20));
 
         jLabel3.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
         jLabel3.setText(",");
 
-        jTextField2.setMinimumSize(new java.awt.Dimension(18, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtB.setMinimumSize(new java.awt.Dimension(18, 20));
+        txtB.setPreferredSize(new java.awt.Dimension(30, 20));
 
         jLabel4.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
         jLabel4.setText("]");
@@ -119,47 +119,44 @@ public class Principal extends Frame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel7.setText("F(x) = ");
 
-        jButton1.setText("Calcular");
+        btnCalcular.setText("Calcular");
 
-        jLabel20.setText("Limpar");
+        lblLimpar.setText("Limpar");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel3)
+                            .addGap(5, 5, 5)
+                            .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel4))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel3)
-                                    .addGap(5, 5, 5)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel4))
-                                .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(185, 185, 185)
+                        .addComponent(lblLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCalcular)))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,25 +164,25 @@ public class Principal extends Frame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jLabel5))
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel20)))
+                    .addComponent(btnCalcular)
+                    .addComponent(lblLimpar)))
         );
 
         jPanel4.add(jPanel6);
@@ -196,14 +193,14 @@ public class Principal extends Frame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel8.setText("N = ");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel9.setText("?");
+        lblN.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblN.setText("?");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel10.setText("<html>P <sub>0</sub> = </html>");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jLabel11.setText("?");
+        lblP.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        lblP.setText("?");
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Legenda"));
 
@@ -280,12 +277,12 @@ public class Principal extends Frame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel8)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55))
+                .addComponent(lblP, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
             .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
@@ -294,10 +291,10 @@ public class Principal extends Frame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(lblP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -355,10 +352,9 @@ public class Principal extends Frame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -368,14 +364,12 @@ public class Principal extends Frame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -385,10 +379,13 @@ public class Principal extends Frame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lblLimpar;
+    private javax.swing.JLabel lblN;
+    private javax.swing.JLabel lblP;
     private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtA;
+    private javax.swing.JTextField txtB;
+    private javax.swing.JTextField txtErro;
+    private javax.swing.JTextField txtFuncao;
     // End of variables declaration//GEN-END:variables
 }

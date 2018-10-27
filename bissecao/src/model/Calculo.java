@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.sun.org.apache.xerces.internal.impl.dv.xs.DecimalDV;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +13,38 @@ import java.util.ArrayList;
  * @author AN_2018
  */
 public class Calculo {
-    private double a;
-    private double b;
+
+    private ArrayList<Linha> calculos;
     
-    private ArrayList<Object> calculos;
-    
-    private int calcularPontoMedio(){
-        
-        return 0;
+    public Calculo(){
+        this.calculos = new ArrayList<>();
     }
-    
+
+    public void calcular(Linha linha) {
+        do {
+            //calcularLinha
+            //savePoint
+            //isFinal
+            //decidir
+            linha.calcularLinha();
+            System.out.println(linha);
+            this.getCalculos().add(linha.savePoint());
+            if (linha.isFinal()) {
+                return;
+            } else {
+                linha.decidir();
+               
+            }
+
+        } while (true);
+    }
+
+    public ArrayList<Linha> getCalculos() {
+        return calculos;
+    }
+
+    public void setCalculos(ArrayList<Linha> calculos) {
+        this.calculos = calculos;
+    }
+
 }

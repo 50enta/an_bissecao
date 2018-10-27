@@ -14,10 +14,6 @@ public class Modelo extends AbstractTableModel {
     List<Linha> dados = new ArrayList<>();
     String[] coluna = {"#", "a", "b", "p", "F(a)", "F(p)", "F(b)", "(b - a)/2"};
 
-    public Modelo() {
-
-    }
-
     @Override
     public String getColumnName(int a) {
         return coluna[a];
