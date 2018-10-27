@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.nfunk.jep.JEP;
 
 /**
@@ -28,41 +30,56 @@ public class Linha {
     private double erro;
     private double n;
 
-    public Linha(String funcao, double erro, float a, float b) {
+    /**
+     * Construtor que inicializa o objecto com a função, o erro e os valores do
+     * intervalo correspondende
+     *
+     * @param funcao
+     * @param erro
+     * @param a
+     * @param b
+     */
+    public Linha(String funcao, double erro, double a, double b) {
         this.setFuncao(funcao);
         this.setErro(erro);
         this.setA(a);
         this.setB(b);
-        this.setLinhaAtual(1);
+        this.setLinhaAtual(0);
+    }
+
+    /**
+     * Inicializa apenas com a função
+     *
+     * @param funcao
+     */
+    public Linha(String funcao) {
+        this.setFuncao(funcao);
     }
 
     public Linha() {
+
     }
 
+    /**
+     * Calcula todos os valores que constituem cada linha da tabela. Parte do
+     * princípio que já tem a função, o erro e os valores de a e b
+     */
     public void calcularLinha() {
         this.setP(this.calcularPontoMedio());
         this.setFa(this.calcularFx(this.getA()));
         this.setFb(this.calcularFx(this.getB()));
         this.setFp(this.calcularFx(this.getP()));
         this.setCondicao(this.calcularCondicaoParagem());
-        this.setLinhaAtual(this.getLinhaAtual()+1);
+        this.setLinhaAtual(this.getLinhaAtual() + 1);
     }
 
     public void decidir() {
         if ((this.getFa() < 0 && this.getFp() < 0) || (this.getFa() > 0 && this.getFp() > 0)) {
-            this.irAEsquerda();
 
+            this.setA(this.getP());
         } else if ((this.getFb() < 0 && this.getFp() < 0) || (this.getFb() > 0 && this.getFp() > 0)) {
-            this.irADireita();
+            this.setB(this.getP());
         }
-    }
-
-    private void irAEsquerda() {
-        this.setA(this.getP());
-    }
-
-    private void irADireita() {
-        this.setB(this.getP());
     }
 
     public boolean isFinal() {
@@ -70,7 +87,18 @@ public class Linha {
     }
 
     public Linha savePoint() {
-        return this;
+        Linha li = new Linha();
+
+        li.setLinhaAtual(this.getLinhaAtual());
+        li.setA(this.getA());
+        li.setB(this.getB());
+        li.setP(this.getP());
+        li.setCondicao(this.getCondicao());
+        li.setFa(this.getFa());
+        li.setFb(this.getFb());
+        li.setFp(this.getFp());
+        
+        return li;
     }
 
     private double calcularPontoMedio() {

@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.Frame;
+import model.Calculo;
+import model.Linha;
 import model.Modelo;
 
 /**
@@ -13,17 +15,20 @@ import model.Modelo;
  * @author AN_2018
  */
 public class Principal extends Frame {
-
-    Modelo model = new Modelo();
     
+    Modelo modelo = new Modelo();
+
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        this.tabela.setModel(model); 
+        this.tabela.setModel(modelo);        
     }
 
+    public int getLinhas(){
+        return 20;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,6 +125,11 @@ public class Principal extends Frame {
         jLabel7.setText("F(x) = ");
 
         btnCalcular.setText("Calcular");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
         lblLimpar.setText("Limpar");
 
@@ -318,7 +328,8 @@ public class Principal extends Frame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabela.setPreferredSize(new java.awt.Dimension(300, 50));
+        tabela.setMaximumSize(new java.awt.Dimension(2147483647, 964));
+        tabela.setPreferredSize(new java.awt.Dimension(300, 550));
         jScrollPane1.setViewportView(tabela);
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -338,6 +349,14 @@ public class Principal extends Frame {
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
     }//GEN-LAST:event_exitForm
+
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        // TODO add your handling code here:
+        Calculo calc = new Calculo();
+        calc.calcular(new Linha(txtFuncao.getText(), Double.parseDouble(txtErro.getText()), Double.parseDouble(txtA.getText()), Double.parseDouble(txtB.getText())));
+        this.modelo.setDados(calc.getLinhas());
+        this.tabela.setModel(modelo);
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**
      * @param args the command line arguments

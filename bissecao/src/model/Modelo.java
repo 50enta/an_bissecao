@@ -14,6 +14,10 @@ public class Modelo extends AbstractTableModel {
     List<Linha> dados = new ArrayList<>();
     String[] coluna = {"#", "a", "b", "p", "F(a)", "F(p)", "F(b)", "(b - a)/2"};
 
+    public Modelo(){
+        
+    }
+    
     @Override
     public String getColumnName(int a) {
         return coluna[a];
@@ -55,10 +59,21 @@ public class Modelo extends AbstractTableModel {
 
     //método actualizar
     public void adicionarDado(Linha d) {
-
         dados.add(d);
         this.fireTableDataChanged();
 
     }
 
+    private List<Linha> getDados() {
+        return dados;
+    }
+
+    public void setDados(ArrayList<Linha> dados) {
+        this.dados = dados;
+        this.fireTableDataChanged();
+    }
+
+   
+
+    
 }

@@ -14,21 +14,17 @@ import java.util.ArrayList;
  */
 public class Calculo {
 
-    private ArrayList<Linha> calculos;
+    private ArrayList<Linha> linhas;
     
     public Calculo(){
-        this.calculos = new ArrayList<>();
+        this.linhas = new ArrayList<>();
     }
 
     public void calcular(Linha linha) {
         do {
-            //calcularLinha
-            //savePoint
-            //isFinal
-            //decidir
             linha.calcularLinha();
-            System.out.println(linha);
-            this.getCalculos().add(linha.savePoint());
+           // System.out.println(linha); //linah dos testes
+            this.getLinhas().add(linha.savePoint());
             if (linha.isFinal()) {
                 return;
             } else {
@@ -39,12 +35,12 @@ public class Calculo {
         } while (true);
     }
 
-    public ArrayList<Linha> getCalculos() {
-        return calculos;
+    public ArrayList<Linha> getLinhas() {
+        return linhas;
     }
 
-    public void setCalculos(ArrayList<Linha> calculos) {
-        this.calculos = calculos;
+    public void setLinhas(ArrayList<Linha> linhas) {
+        this.linhas = linhas;
     }
 
 }

@@ -3,7 +3,6 @@ package view;
 
 import model.Calculo;
 import model.Linha;
-import org.nfunk.jep.JEP;
 
 /**
  *
@@ -17,8 +16,7 @@ public class Teste {
         
         cal.calcular(l);
 
-        System.out.println(cal.getCalculos());
-
+        System.out.println(cal.getLinhas());
         
     }
     
