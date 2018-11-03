@@ -7,6 +7,7 @@ package model;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.nfunk.jep.JEP;
 
 /**
@@ -97,7 +98,7 @@ public class Linha {
         li.setFa(this.getFa());
         li.setFb(this.getFb());
         li.setFp(this.getFp());
-        
+
         return li;
     }
 
@@ -117,7 +118,8 @@ public class Linha {
         jp.parseExpression(this.funcao);
 
         if (jp.hasError()) {
-            System.out.println(jp.getErrorInfo());
+//            System.out.println(jp.getErrorInfo());
+            JOptionPane.showMessageDialog(null, "Erro na função");
         }
         return jp.getValue();
     }
