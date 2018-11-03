@@ -5,7 +5,9 @@
  */
 package view;
 
+import java.awt.Color;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 import model.Calculo;
 import model.Linha;
 import model.Modelo;
@@ -15,7 +17,7 @@ import model.Modelo;
  * @author AN_2018
  */
 public class Principal extends Frame {
-    
+
     Modelo modelo = new Modelo();
 
     /**
@@ -23,12 +25,22 @@ public class Principal extends Frame {
      */
     public Principal() {
         initComponents();
-        this.tabela.setModel(modelo);        
+        this.tabela.setModel(modelo);
     }
 
-    public int getLinhas(){
-        return 20;
+    public boolean validar() {
+        if (txtFuncao.getText().trim().equalsIgnoreCase("ex: ln(x) - x + 4")) {
+            return false;
+        } else if (txtA.getText().trim().equalsIgnoreCase("valor de a")) {
+            return false;
+        } else if (txtB.getText().trim().equalsIgnoreCase("valor de b")) {
+            return false;
+        } else if (txtB.getText().trim().equalsIgnoreCase("ex: 0,00003")) {
+            return false;
+        }
+        return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -69,6 +81,11 @@ public class Principal extends Frame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblP1 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        lblP2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -103,26 +120,68 @@ public class Principal extends Frame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel5.setText("Intervalo: ");
 
-        jLabel2.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tekton Pro", 1, 36)); // NOI18N
         jLabel2.setText("[");
 
+        txtA.setForeground(new java.awt.Color(190, 190, 190));
+        txtA.setText("valor de a");
         txtA.setMinimumSize(new java.awt.Dimension(18, 20));
         txtA.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAFocusLost(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
         jLabel3.setText(",");
 
+        txtB.setForeground(new java.awt.Color(190, 190, 190));
+        txtB.setText("valor de b");
         txtB.setMinimumSize(new java.awt.Dimension(18, 20));
         txtB.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtB.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBFocusLost(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Tekton Pro", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tekton Pro", 1, 36)); // NOI18N
         jLabel4.setText("]");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel6.setText("ɛ = ");
 
+        txtErro.setForeground(new java.awt.Color(190, 190, 190));
+        txtErro.setText("ex: 0,00003");
+        txtErro.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtErroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtErroFocusLost(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel7.setText("F(x) = ");
+
+        txtFuncao.setForeground(new java.awt.Color(190, 190, 190));
+        txtFuncao.setText("ex: ln(x) - x + 4");
+        txtFuncao.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtFuncaoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFuncaoFocusLost(evt);
+            }
+        });
 
         btnCalcular.setText("Calcular");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -138,58 +197,65 @@ public class Principal extends Frame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(18, 18, 18)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel3)
-                            .addGap(5, 5, 5)
-                            .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel4))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
+                        .addGap(247, 247, 247)
                         .addComponent(lblLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCalcular)))
-                .addGap(0, 5, Short.MAX_VALUE))
+                        .addComponent(btnCalcular))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addGap(18, 18, 18)
+                            .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(58, 58, 58)
+                                    .addComponent(jLabel6))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabel5)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(12, 12, 12)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jLabel4))))))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                    .addComponent(txtFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jLabel5))
-                    .addComponent(jLabel3)
-                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                    .addComponent(txtErro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCalcular)
                     .addComponent(lblLimpar)))
@@ -279,32 +345,70 @@ public class Principal extends Frame {
                     .addComponent(jLabel19)))
         );
 
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel11.setText("sol {");
+
+        lblP1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblP1.setForeground(new java.awt.Color(255, 0, 102));
+        lblP1.setText("0,000000");
+
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel20.setText("}");
+
+        jLabel21.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel21.setText("±");
+
+        lblP2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblP2.setForeground(new java.awt.Color(255, 0, 102));
+        lblP2.setText("0,000000");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblP, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
             .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblP1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblP2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblP, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(lblN, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblP, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(lblP1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel21))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblP2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -352,11 +456,91 @@ public class Principal extends Frame {
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
-        Calculo calc = new Calculo();
-        calc.calcular(new Linha(txtFuncao.getText(), Double.parseDouble(txtErro.getText()), Double.parseDouble(txtA.getText()), Double.parseDouble(txtB.getText())));
-        this.modelo.setDados(calc.getLinhas());
-        this.tabela.setModel(modelo);
+        if (this.validar()) {
+            try{
+            Calculo calc = new Calculo();
+            calc.calcular(new Linha(txtFuncao.getText(), Double.parseDouble(txtErro.getText()), Double.parseDouble(txtA.getText()), Double.parseDouble(txtB.getText())));
+            this.modelo.setDados(calc.getLinhas());
+            this.tabela.setModel(modelo);
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(this, "Verifique se os campos estão preenchidos corretamente");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos");
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void txtFuncaoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFuncaoFocusGained
+        // TODO add your handling code here:
+        String padrao = "ex: ln(x) - x + 4";
+        if (txtFuncao.getText().equalsIgnoreCase(padrao)) {
+            txtFuncao.setText("");
+            txtFuncao.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_txtFuncaoFocusGained
+
+    private void txtFuncaoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFuncaoFocusLost
+        String padrao = "ex: ln(x) - x + 4";
+        if (txtFuncao.getText().trim().equalsIgnoreCase("")) {
+            txtFuncao.setText(padrao);
+            txtFuncao.setForeground(new Color(190, 190, 190));
+        }
+    }//GEN-LAST:event_txtFuncaoFocusLost
+
+    private void txtAFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAFocusGained
+        // TODO add your handling code here:
+        String padrao = "valor de a";
+        if (txtA.getText().equalsIgnoreCase(padrao)) {
+            txtA.setText("");
+            txtA.setForeground(new Color(0, 0, 0));
+        }
+
+    }//GEN-LAST:event_txtAFocusGained
+
+    private void txtAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAFocusLost
+        // TODO add your handling code here:
+        String padrao = "valor de a";
+        if (txtA.getText().trim().equalsIgnoreCase("")) {
+            txtA.setText(padrao);
+            txtA.setForeground(new Color(190, 190, 190));
+        }
+    }//GEN-LAST:event_txtAFocusLost
+
+    private void txtBFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBFocusGained
+        // TODO add your handling code here:
+        String padrao = "valor de b";
+        if (txtB.getText().equalsIgnoreCase(padrao)) {
+            txtB.setText("");
+            txtB.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_txtBFocusGained
+
+    private void txtBFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBFocusLost
+        // TODO add your handling code here:
+        String padrao = "valor de b";
+        if (txtB.getText().trim().equalsIgnoreCase("")) {
+            txtB.setText(padrao);
+            txtB.setForeground(new Color(190, 190, 190));
+        }
+    }//GEN-LAST:event_txtBFocusLost
+
+    private void txtErroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtErroFocusGained
+        // TODO add your handling code here:
+        String padrao = "ex: 0,00003";
+        if (txtErro.getText().equalsIgnoreCase(padrao)) {
+            txtErro.setText("");
+            txtErro.setForeground(new Color(0, 0, 0));
+        }
+    }//GEN-LAST:event_txtErroFocusGained
+
+    private void txtErroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtErroFocusLost
+        // TODO add your handling code here:
+        String padrao = "ex: 0,00003";
+        if (txtErro.getText().trim().equalsIgnoreCase("")) {
+            txtErro.setText(padrao);
+            txtErro.setForeground(new Color(190, 190, 190));
+        }
+    }//GEN-LAST:event_txtErroFocusLost
 
     /**
      * @param args the command line arguments
@@ -374,6 +558,7 @@ public class Principal extends Frame {
     private javax.swing.JButton btnCalcular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -383,6 +568,8 @@ public class Principal extends Frame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -401,6 +588,8 @@ public class Principal extends Frame {
     private javax.swing.JLabel lblLimpar;
     private javax.swing.JLabel lblN;
     private javax.swing.JLabel lblP;
+    private javax.swing.JLabel lblP1;
+    private javax.swing.JLabel lblP2;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtA;
     private javax.swing.JTextField txtB;
