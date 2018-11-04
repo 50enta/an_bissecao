@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.nfunk.jep.JEP;
 
 /**
+ * Classe cujo o seu bjecto respresenta cada linha do objecto.
  *
- * @author 50enta
+ * @author AN_2018
  */
 public class Linha {
-//  String[] coluna = {"#", "a", "b", "p", "F(a)", "F(p)", "F(b)", "(b - a)/2"};
 
+    //Atributos
     private int linhaAtual;
     private double a;
     private double b;
@@ -74,22 +68,35 @@ public class Linha {
         this.setLinhaAtual(this.getLinhaAtual() + 1);
     }
 
+    /**
+     * Caso seja para prosseguir, este método determina o novo intervalor, dado
+     * as condições.
+     */
     public void decidir() {
         if ((this.getFa() < 0 && this.getFp() < 0) || (this.getFa() > 0 && this.getFp() > 0)) {
-
             this.setA(this.getP());
         } else if ((this.getFb() < 0 && this.getFp() < 0) || (this.getFb() > 0 && this.getFp() > 0)) {
             this.setB(this.getP());
         }
     }
 
+    /**
+     * Verifica se já chegou ao final ou não, antes de invocar o método decidir
+     *
+     * @return
+     */
     public boolean isFinal() {
         return this.getCondicao() <= this.getErro();
     }
 
+    /**
+     * Salva o atual estado do objecto, para ser listado na tabela
+     * posteriormente
+     *
+     * @return
+     */
     public Linha savePoint() {
         Linha li = new Linha();
-
         li.setLinhaAtual(this.getLinhaAtual());
         li.setA(this.getA());
         li.setB(this.getB());
@@ -110,6 +117,12 @@ public class Linha {
         return (this.getB() - this.getA()) / 2;
     }
 
+    /**
+     * Calcula o valor de x na função.
+     *
+     * @param x
+     * @return
+     */
     private double calcularFx(double x) {
         JEP jp = new JEP();
         jp.addStandardConstants();
