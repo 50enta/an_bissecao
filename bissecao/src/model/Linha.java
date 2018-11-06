@@ -12,18 +12,13 @@ public class Linha {
 
     //Atributos
     private int linhaAtual;
-    private double a;
-    private double b;
-    private double p;
-    private double fa;
-    private double fp;
-    private double fb;
-    private double condicao;
+    private double a, b, p, fa, fp, fb, condicao;
+  
 
     //Outros
     private String funcao;
     private double erro;
-    private double n;
+  
 
     /**
      * Construtor que inicializa o objecto com a função, o erro e os valores do
@@ -55,6 +50,10 @@ public class Linha {
 
     }
 
+    public boolean isPossivel(){
+        return this.calcularFx(this.getA())* this.calcularFx(this.getB()) <= 0;
+    }
+    
     /**
      * Calcula todos os valores que constituem cada linha da tabela. Parte do
      * princípio que já tem a função, o erro e os valores de a e b
@@ -218,17 +217,10 @@ public class Linha {
         this.erro = erro;
     }
 
-    public double getN() {
-        return n;
-    }
-
-    public void setN(double n) {
-        this.n = n;
-    }
-
+ 
     @Override
     public String toString() {
-        return "Linha{" + "linhaAtual=" + linhaAtual + ", a=" + a + ", b=" + b + ", p=" + p + ", fa=" + fa + ", fp=" + fp + ", fb=" + fb + ", condicao=" + condicao + ", funcao=" + funcao + ", erro=" + erro + ", n=" + n + '}';
+        return "Linha{" + "linhaAtual=" + linhaAtual + ", a=" + a + ", b=" + b + ", p=" + p + ", fa=" + fa + ", fp=" + fp + ", fb=" + fb + ", condicao=" + condicao + ", funcao=" + funcao + ", erro=" + erro +'}';
     }
 
 }
