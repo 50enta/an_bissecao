@@ -46,9 +46,13 @@ public class Principal extends Frame {
 
     public void limpar() {
         txtFuncao.setText("ex: ln(x) - x + 4");
+        txtFuncao.setForeground(new Color(190, 190, 190));
         txtA.setText("valor de a");
+        txtA.setForeground(new Color(190, 190, 190));
         txtB.setText("valor de b");
+        txtB.setForeground(new Color(190, 190, 190));
         txtErro.setText("ex: 0,00003");
+        txtErro.setForeground(new Color(190, 190, 190));
         tabela.setModel(new Modelo());
         lblN.setText("?");
         lblP.setText("?");
