@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Classe que representa a tabela inteira, que faz a integração de todas as
@@ -17,27 +18,33 @@ public class Calculo {
     }
 
     /**
-     * É o método que relaciona todos os outros métodos. 
-     * Recee um objecto de classe linha, que 
-     * @param linha 
+     * É o método que relaciona todos os outros métodos. Recee um objecto de
+     * classe linha, que
+     *
+     * @param linha
      */
     public void calcular(Linha linha) {
-        do {
-            linha.calcularLinha();
-            // System.out.println(linha); //linah dos testes
-            this.getLinhas().add(linha.savePoint());
-            if (linha.isFinal()) {
-                return;
-            } else {
-                linha.decidir();
-            }
+        if (linha.isPossivel()) {
+            do {
+                linha.calcularLinha();
+                // System.out.println(linha); //linah dos testes
+                this.getLinhas().add(linha.savePoint());
+                if (linha.isFinal()) {
+                    return;
+                } else {
+                    linha.decidir();
+                }
 
-        } while (true);
+            } while (true);
+        } else{
+            JOptionPane.showMessageDialog(null, "\n A condição: F(a) * F(b) ≤ 0 \n não se cumpre.");
+        }
     }
 
     /**
      * Retorna a solução, depois do precesso term sido finalizado
-     * @return 
+     *
+     * @return
      */
     public double getSolucao() {
         double sol = 0;
@@ -47,7 +54,6 @@ public class Calculo {
         return sol;
     }
 
-    
     public double getP() {
         double sol = 0;
         for (Linha a : this.getLinhas()) {
@@ -59,7 +65,8 @@ public class Calculo {
 
     /**
      * Retorna o número de ierações necessitadas duarante o cálculo
-     * @return 
+     *
+     * @return
      */
     public int getN() {
         return (int) this.getLinhas().size();

@@ -1,4 +1,3 @@
-
 package view;
 
 import model.Calculo;
@@ -6,34 +5,26 @@ import model.Linha;
 
 /**
  *
- * @author POO_2018
+ * @author AN_2018
  */
 public class Teste {
 
     public static void main(String[] args) {
-        Calculo cal = new Calculo();
-        Linha l = new Linha("ln(x) - x + 2", 0.01, 3, 4);
-        
-        cal.calcular(l);
 
-        System.out.println(cal.getLinhas());
-        
+        System.out.println(marco(8.789584, imildo(0.76)));
+
     }
-    
-    
-//    public static void main(String[] args) {
-//
-//        JEP jp = new JEP();
-//        jp.addStandardConstants();
-//        jp.addStandardFunctions();
-//        jp.addVariable("x", 3);
-//        jp.parseExpression("cos(1)");
-//
-//        if (jp.hasError()) {
-//            System.out.println(jp.getErrorInfo());
-//        } else {
-//            System.out.println(jp.getValue());
-//        }
-//    }
 
+    public static int imildo(double num) {
+        return Double.toString(num).split("\\.")[1].length();
+    }
+
+    public static double marco(double num, int n) {
+        String ini = "1";
+        for (int i = 0; i < n; i++) {
+            ini += "0";
+        }
+        int mult = Integer.parseInt(ini);
+        return (int) num + Double.parseDouble(( "0." +(int) ((num * mult) % mult)));
+    }
 }

@@ -12,13 +12,15 @@ import javax.swing.table.TableModel;
 import model.Calculo;
 import model.Linha;
 import model.Modelo;
+import static view.Teste.imildo;
+import static view.Teste.marco;
 
 /**
  *
  * @author AN_2018
  */
 public class Principal extends Frame {
-    
+
     Modelo modelo = new Modelo();
 
     /**
@@ -28,7 +30,7 @@ public class Principal extends Frame {
         initComponents();
         this.tabela.setModel(modelo);
     }
-    
+
     public boolean validar() {
         if (txtFuncao.getText().trim().equalsIgnoreCase("ex: ln(x) - x + 4")) {
             return false;
@@ -41,17 +43,34 @@ public class Principal extends Frame {
         }
         return true;
     }
-    
+
     public void limpar() {
         txtFuncao.setText("ex: ln(x) - x + 4");
+        txtFuncao.setForeground(new Color(190, 190, 190));
         txtA.setText("valor de a");
+        txtA.setForeground(new Color(190, 190, 190));
         txtB.setText("valor de b");
+        txtB.setForeground(new Color(190, 190, 190));
         txtErro.setText("ex: 0,00003");
+        txtErro.setForeground(new Color(190, 190, 190));
         tabela.setModel(new Modelo());
         lblN.setText("?");
         lblP.setText("?");
         lblRes.setText("0,000000");
         lblResErro.setText("0,000000");
+    }
+
+    public static int imildo(double num) {
+        return Double.toString(num).split("\\.")[1].length();
+    }
+
+    public static double marco(double num, int n) {
+        String ini = "1";
+        for (int i = 0; i < n; i++) {
+            ini += "0";
+        }
+        int mult = Integer.parseInt(ini);
+        return (int) num + Double.parseDouble(("0." + (int) ((num * mult) % mult)));
     }
 
     /**
@@ -94,6 +113,8 @@ public class Principal extends Frame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblRes = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -311,6 +332,10 @@ public class Principal extends Frame {
 
         jLabel19.setText("O ponto médio do intervalo");
 
+        jLabel22.setText("até que (b - a)/2 ≤ ɛ");
+
+        jLabel23.setText("Paragem ⇒");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -321,23 +346,27 @@ public class Principal extends Frame {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -354,10 +383,15 @@ public class Principal extends Frame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jLabel19)))
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
@@ -423,8 +457,8 @@ public class Principal extends Frame {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblResErro, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel20)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.add(jPanel7);
@@ -472,17 +506,23 @@ public class Principal extends Frame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         // TODO add your handling code here:
         if (this.validar()) {
-            try {
-                Calculo calc = new Calculo();
-                calc.calcular(new Linha(txtFuncao.getText(), Double.parseDouble(txtErro.getText()), Double.parseDouble(txtA.getText()), Double.parseDouble(txtB.getText())));
-                this.modelo.setDados(calc.getLinhas());
-                this.tabela.setModel(modelo);
-                this.lblRes.setText(Double.toString(calc.getSolucao()));
-                this.lblResErro.setText(txtErro.getText());
-                this.lblN.setText(Double.toString(calc.getN()));
-                this.lblP.setText(Double.toString(calc.getP()));
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this, "Verifique se os campos estão preenchidos corretamente");
+            if (Double.parseDouble(txtA.getText()) < Double.parseDouble(txtB.getText())) {
+                try {
+                    Calculo calc = new Calculo();
+                    calc.calcular(new Linha(txtFuncao.getText(), Double.parseDouble(txtErro.getText()), Double.parseDouble(txtA.getText()), Double.parseDouble(txtB.getText())));
+                    this.modelo.setDados(calc.getLinhas());
+                    this.tabela.setModel(modelo);
+//                this.lblRes.setText(Double.toString(calc.getSolucao()));
+                    this.lblRes.setText(Double.toString(marco(calc.getSolucao(), imildo(Double.parseDouble(txtErro.getText())))));
+                    this.lblResErro.setText(txtErro.getText());
+//                marco(calc.getSolucao(), imildo(Double.parseDouble(txtErro.getText())));
+                    this.lblN.setText(Double.toString(calc.getN()));
+                    this.lblP.setText(Double.toString(calc.getP()));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, "Verifique se os campos estão preenchidos corretamente");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Intervalo representado de forma errada!");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos");
@@ -533,7 +573,7 @@ public class Principal extends Frame {
             txtB.setForeground(new Color(0, 0, 0));
         }
     }//GEN-LAST:event_txtBFocusGained
-    
+
 
     private void txtBFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBFocusLost
         // TODO add your handling code here:
@@ -595,6 +635,8 @@ public class Principal extends Frame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -45,11 +45,11 @@ public class Modelo extends AbstractTableModel {
             case 3:
                 return dados.get(linha).getP();
             case 4:
-                return dados.get(linha).getFa();
+                return dados.get(linha).getFa() < 0? "              - ":"              + ";
             case 5:
-                return dados.get(linha).getFp();
+                return dados.get(linha).getFp() < 0? "              - ":"              + ";
             case 6:
-                return dados.get(linha).getFb();
+                return dados.get(linha).getFb() < 0? "              - ":"              + ";
             case 7:
                 return dados.get(linha).getCondicao();
         }
